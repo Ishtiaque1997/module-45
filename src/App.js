@@ -20,32 +20,40 @@ function App() {
   //1. externally 2. accessing as an object 3. internally with double curly braces
   return (
     <div className="App">
-      <Person/>
-      <Person/> 
-       <Person/>
-      <Person/> 
-       <Person/>
-      <Person/>      
+      {/* <Person name='sakib'nayika='Shabnur'></Person>
+      <Person name='Jasim'nayika='Shabana'></Person> 
+      <Person name='Shakil' nayika='Popi'></Person>      */}
+
+     <Friend phone='0987' address='dhaka'></Friend>
+     <Friend phone='1987'address='comilla'></Friend>
+     <Friend phone='2987'address='noakhali'></Friend>
+     <Friend phone='3987'address='borisal'></Friend>
     </div>
   );
 }
-function Person(){
+function Person(props){
+  console.log(props)
   const person={
     backgroundColor:'skyblue',
     border:'3px solid red',
     margin:'20px',
-    borderRadius:'20px'
+    borderRadius:'10px'
 
   }
   return (
-  <div style={{backgroundColor:'skyblue',
-    border:'3px solid red',
-    margin:'20px',
-    borderRadius:'20px'}}>
-    <h1>Sakib Al Hasan</h1>
-    <h4>Profession:Cricketer</h4>
+  <div style={person}>
+    <h1>{props.name}</h1>
+    <h3>{props.nayika}</h3>
+    <h4>Profession:Actor</h4>
   </div>
   )
 }
-
+function Friend(props){
+  return (
+    <div className='person'>
+      <h3>Phone:{props.phone}</h3>
+      <h5>Address:{props.address} </h5>
+    </div>
+  )
+}
 export default App;
