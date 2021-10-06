@@ -1,5 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
+import {useState} from 'react';
 
 function App() {
   const nayoks=['Rubel','Jasim','Shakil','Shuvo']
@@ -28,13 +29,13 @@ function App() {
   ]
   return (
     <div className="App">
-
+     <Counter></Counter>
       {/* mapping a simple array */}
-      <ul>
+      {/* <ul>
         {
           nayoks.map(nayok=><li>{nayok}</li>)
         }
-      </ul>
+      </ul> */}
 
       {/* mapping an array of objects */}
       {
@@ -75,6 +76,19 @@ function Person(props){
   )
 }
 
+//function to demonstrate counter
+function Counter(){
+  const[count,setCount]=useState(0);
+  const handleIncrease=()=>setCount(count+1);
+  const handleDecrease=()=>setCount(count-1);
+  return(
+    <div>
+      <h1>Count:{count}</h1>
+      <button onClick={handleIncrease}>Increase</button>
+      <button onClick={handleDecrease}>Decrease</button>
+    </div>
+  )
+}
 function Cinema(props){
   return(
     <div className='person'>
@@ -84,9 +98,10 @@ function Cinema(props){
   )
 }
 
+
 function Friend(props){
   return(
-    <div>
+    <div className='person'>
       <h3>{props.phone}</h3>
       <h6>{props.address}</h6>
     </div>
