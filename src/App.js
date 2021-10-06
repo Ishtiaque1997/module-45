@@ -28,35 +28,44 @@ function App() {
   ]
   return (
     <div className="App">
+
+      {/* mapping a simple array */}
       <ul>
         {
           nayoks.map(nayok=><li>{nayok}</li>)
         }
       </ul>
+
+      {/* mapping an array of objects */}
       {
         cinemas.map(cinema=><Cinema nayok={cinema.nayok}nayika={cinema.nayika}></Cinema>)
       }
-      {/* <Cinema nayok='Bond'nayika='ema'></Cinema> */}
-      {/* <Person name={nayoks[0]}nayika='Shabnur'></Person>
+      
+      {/* display element in a component from an array */}
+      <Person name={nayoks[0]}nayika='Shabnur'></Person>
       <Person name={nayoks[1]}nayika='Shabana'></Person> 
-      <Person name={nayoks[2]} nayika='Popi'></Person>      */}
-
-     {/* <Friend phone='0987' address='dhaka'></Friend>
+      <Person name={nayoks[2]} nayika='Popi'></Person>     
+      
+      {/* display hard coded elements in a component */}
+     <Friend phone='0987' address='dhaka'></Friend>
      <Friend phone='1987'address='comilla'></Friend>
      <Friend phone='2987'address='noakhali'></Friend>
-     <Friend phone='3987'address='borisal'></Friend> */}
+     <Friend phone='3987'address='borisal'></Friend>
     </div>
   );
 }
+
+//declaring person component
 function Person(props){
   console.log(props)
+  
+  //style for person
   const person={
     backgroundColor:'skyblue',
     border:'3px solid red',
     margin:'20px',
     borderRadius:'10px'
-
-  }
+}
   return (
   <div style={person}>
     <h1>{props.name}</h1>
@@ -65,19 +74,21 @@ function Person(props){
   </div>
   )
 }
-function Friend(props){
-  return (
-    <div className='person'>
-      <h3>Phone:{props.phone}</h3>
-      <h5>Address:{props.address} </h5>
-    </div>
-  )
-}
+
 function Cinema(props){
   return(
     <div className='person'>
       <h2>nayok:{props.nayok}</h2>
       <h4>nayika:{props.nayika}</h4>
+    </div>
+  )
+}
+
+function Friend(props){
+  return(
+    <div>
+      <h3>{props.phone}</h3>
+      <h6>{props.address}</h6>
     </div>
   )
 }
