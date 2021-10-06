@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import {useState} from 'react';
+import {useState,useEffect} from 'react';
 
 function App() {
   const nayoks=['Rubel','Jasim','Shakil','Shuvo']
@@ -30,6 +30,7 @@ function App() {
   return (
     <div className="App">
      <Counter></Counter>
+     <ExternalUsers></ExternalUsers>
       {/* mapping a simple array */}
       {/* <ul>
         {
@@ -76,7 +77,7 @@ function Person(props){
   )
 }
 
-//function to demonstrate counter
+//function to demonstrate state
 function Counter(){
   const[count,setCount]=useState(0);
   const handleIncrease=()=>setCount(count+1);
@@ -89,6 +90,39 @@ function Counter(){
     </div>
   )
 }
+
+//demonstrate useEffect
+function ExternalUsers(){
+  const[users,setUsers]=useState([]);
+  
+  //calls data
+  useEffect(()=>{
+    fetch('https://jsonplaceholder.typicode.com/users')
+    .then(res=>res.json())
+    .then(data=>setUsers(data))
+    
+  }
+  
+  ,[] )
+  return(
+    <div>
+      <h2>External Users:{users.length}</h2>
+      {
+        users.map(user=><User name={user.name}email={user.email}></User>)
+      }
+    </div>
+  )
+}
+function User(props){
+  return (
+    <div className='person'>
+      <h2>{props.name}</h2>
+      <h4>{props.email}</h4>
+    </div>
+  )
+}
+
+
 function Cinema(props){
   return(
     <div className='person'>
